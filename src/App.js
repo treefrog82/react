@@ -31,10 +31,24 @@ function App() {
       }
     }
     content=<Article title={title} body={body}/>
-    contextCotrol=<li><a href={'/update/'+id} onClick={e=>{
+    contextCotrol=
+    <>
+    <li><a href={'/update/'+id} onClick={e=>{
       e.preventDefault()
       setMode('UPDATE')
     }}>UPDATE</a></li>
+    <li><input type='button' value='DELETE' onClick={()=>{
+      const newTopics = []
+      for(let i=0;i<topics.length;i++){
+        console.log(topics[i].id, Number(id))
+        if(topics[i].id!==Number(id)){
+          newTopics.push(topics[i])
+        }
+      }
+      setTopics(newTopics)
+      setMode('WELCOME')
+    }}/></li>
+    </>
   }else if(mode==='CREATE'){
     content=<Create onCreate={(_title, _body)=>{
       const newTopic = {id: nextId, title: _title, body: _body}
@@ -54,14 +68,16 @@ function App() {
       }
     }
     content=<Update onUpdate={(_title, _body)=>{
+      const updatedTopic = {id: Number(id), title: _title, body: _body}
       const newTopics = [...topics]
-      const updatedTopic = {id: id, title: _title, body: _body}
       for(let i=0;i<newTopics.length;i++){
-        if(newTopics[i].id===id){
+        console.log(newTopics[i].id, Number(id))
+        if(newTopics[i].id===Number(id)){
           newTopics[i]=updatedTopic
           break
         }
       }
+      console.log(newTopics)
       setTopics(newTopics)
       setMode('READ')
     }} id='' name='' title={title} body={body}/>
