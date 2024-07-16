@@ -13,11 +13,9 @@ function Update(props) {
                 props.onUpdate(title, body)
             }}>
                 <p><input type='text' name='title' placeholder='title' value={title} onChange={e=>{
-                    console.log(e.target.value)
                     setTitle(e.target.value)
                 }}/></p>
                 <p><textarea name='body' placeholder='body' value={body} onChange={e=>{
-                    console.log(e.target.value)
                     setBody(e.target.value)
                 }}/></p>
                 <p><input type='submit' value='Update'/></p>

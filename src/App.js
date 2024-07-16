@@ -13,11 +13,7 @@ function App() {
   const [mode, setMode] = useState('WELCOME')
   const [id, setId] = useState(null)
   const [nextId, setNextId] = useState(4)
-  const [topics, setTopics] = useState([
-    {id:1, title:'html', body:'html is ...'},
-    {id:2, title:'css', body:'css is ...'},
-    {id:3, title:'js', body:'js is ...'}
-  ])
+  const [topics, setTopics] = useState([])
   let content=null
   let contextCotrol=null
   if(mode==='WELCOME'){
